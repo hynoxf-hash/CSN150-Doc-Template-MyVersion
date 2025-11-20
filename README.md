@@ -1,34 +1,30 @@
-# Cybersecurity : CSN150
-Project: ESP32 XXXXXXXX
+# Cybersecurity : CSN150  
+## Project: ESP32-CAM Access Point (No Camera)
 
-## Purpose
-Set up ESP32 and Arduino enviornment. Execute sketch " Wifiscanner". 
+### Purpose
+Set up the ESP32-CAM as a Wi-Fi access point and web server using the Arduino IDE, without connecting the camera module. Test that the ESP32 creates its own Wi-Fi network successfully.
 
-## Equipment
-* [ESP32Cam](https://www.amazon.com/Aideepen-ESP32-CAM-Bluetooth-ESP32-CAM-MB-Arduino/dp/B08P2578LV/ref=sr_1_3?crid=4FY0ECFW0ZX7&keywords=ESP32+Cam&qid=1678902050&sprefix=esp32+cam%2Caps%2C240&sr=8-3)
+### Equipment
+- ESP32-CAM AI Thinker board (Aideepen W-BT with OV2640 support)  
+- USB Type-C to Serial Port CH-340G cable  
+- Computer with Arduino IDE installed  
 
-* [USB Micro Data Cable](https://www.amazon.com/AmazonBasics-Male-Micro-Cable-Black/dp/B0711PVX6Z/ref=sr_1_1_sspa?keywords=micro+usb+data+cable&qid=1678902214&sprefix=Micro+USB+data+%2Caps%2C89&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFaU0NaUVZHU1RFUlAmZW5jcnlwdGVkSWQ9QTA3NTA4MDVFVERCS01HVlgxM1YmZW5jcnlwdGVkQWRJZD1BMDE4NTE1NTIwWUdONkdWSzU1M1Amd2lkZ2V0TmFtZT1zcF9hdGYmYWN0aW9uPWNsaWNrUmVkaXJlY3QmZG9Ob3RMb2dDbGljaz10cnVl)
+### Links to Documentation and Tools
+- [ESP32-CAM AP tutorial](https://randomnerdtutorials.com/esp32-cam-access-point-ap-web-server/)  
+- [Arduino IDE](https://www.arduino.cc/en/software)  
 
-## Links to documentation and tools
+### AI GPTs Used
+- ChatGPT for code modification and troubleshooting  
 
-##### Video 1: 
+### Steps I Followed
+1. Installed ESP32 board support in Arduino IDE.  
+2. Selected the **ESP32-CAM AI Thinker** board in the IDE.  
+3. Opened the **CameraWebServer** example from Arduino IDE.  
+4. Removed all code related to initializing and using the camera, since the camera was not connected.  
+5. Replaced the Wi-Fi connection code (`WiFi.begin(...)`) with `WiFi.softAP(...)` to set up the ESP32 as an access point.  
+6. Uploaded the modified sketch via USB without pressing the **BOOT** button.  
+7. Opened the serial monitor to check if the ESP32 successfully created the access point.  
+8. Connected my phone to the new Wi-Fi network (`ESP32-CAM-AP`) and verified the IP address (`192.168.4.1`).  
 
-##### Other Links: 
-
-##### AI GPTs used
-
-## Steps I followed
-1. Write the steps you followed here.  This way you can keep track of where you might have messed up if the project does not work. 
-
-## Problems and Solutions
-Note your problems or errors here.  Google any error you may come across, and not what you tried (even if it does not work), and what was the final answer. Document your errors and solutions that worked for you.  
-
-**Problem:** E (485) camera: Camera probe failed with error 0x105(ESP_ERR_NOT_FOUND)
-Camera init failed with error 0x105
-**Solution:**
-
-### Example Problem
-**Problem:** Arduino code will not load on ESP32 Cam.
-**Solution:** Camera drivers were incorrect I needed to install the driver: [https://www.wch-ic.com/downloads/CH341SER_ZIP.html](https://github.com/martin-ger/esp32_nat_router).  I used file, "CH341SER.ZIP" and it worked.
-
-## Final Report
+### Problems and Solutions
+- **Problem:** The original code required the camera to be connected, or it would throw errors:  
